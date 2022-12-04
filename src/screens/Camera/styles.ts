@@ -16,16 +16,6 @@ export const CameraWrapper = styled.View`
   flex: 1;
 `;
 
-export const Header = styled.View`
-  width: 100%;
-  height: ${RFValue(50)}px;
-  background-color: blue;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 ${RFValue(20)}px;
-`;
-
 export const ButtonOpacity = styled.TouchableOpacity``;
 
 export const Footer = styled.View`
