@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Linking } from 'react-native';
 import {
@@ -6,12 +7,16 @@ import {
 } from 'react-native-vision-camera';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ImagePicker from 'react-native-image-crop-picker';
+import { useNavigation } from '@react-navigation/native';
+
+import { Header } from '../../componnets/Header';
 
 import * as S from './styles';
 
 export const Camera = () => {
   const [switchCamera, setSwitchCamera] = useState<'back' | 'front'>('back');
   const [activeFlash, setActiveFlash] = useState<'on' | 'off'>('off');
+  const navigation = useNavigation();
   const cameraRef = useRef<RNCamera>(null);
   const devices = useCameraDevices();
   const device = devices[switchCamera];
@@ -24,19 +29,35 @@ export const Camera = () => {
     setActiveFlash((position) => (position === 'on' ? 'off' : 'on'));
   };
 
+  const handleOpenCropper = (imagePath: string) => {
+    console.log('aqui');
+    console.log(imagePath);
+    ImagePicker.openCropper({
+      mediaType: 'photo',
+      path: imagePath,
+      cropperToolbarTitle: 'Editar Foto',
+      cropperActiveWidgetColor: '#00ff22',
+      cropperStatusBarColor: '#00ffff',
+    })
+      .then((imageCropped) => {
+        console.log('aqui');
+        navigation.navigate('PhotoTypeSeparate', {
+          imagePhoto: {
+            path: imageCropped.path,
+          },
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const handleTakePicture = async () => {
     const photo = await cameraRef.current?.takePhoto();
 
-    console.log(photo?.path);
     if (photo) {
-      ImagePicker.openCropper({
-        mediaType: 'photo',
-        path: `file://${photo.path}`,
-      })
-        .then((imageCropped) => {
-          console.log(imageCropped);
-        })
-        .catch(() => null);
+      console.log(photo);
+      handleOpenCropper(`file://${photo.path}`);
     }
   };
 
@@ -47,18 +68,7 @@ export const Camera = () => {
       compressImageMaxWidth: 900,
     })
       .then((image) => {
-        console.log(image);
-
-        ImagePicker.openCropper({
-          mediaType: 'photo',
-          path: image.path,
-          width: 500,
-          height: 500,
-        })
-          .then((imageCropped) => {
-            console.log(imageCropped);
-          })
-          .catch(() => null);
+        handleOpenCropper(image.path);
       })
       .catch(() => null);
   };
@@ -94,14 +104,13 @@ export const Camera = () => {
 
   return (
     <S.Container>
-      <S.Header>
-        <S.ButtonOpacity>
-          <MaterialIcons name="arrow-back" size={28} color="white" />
-        </S.ButtonOpacity>
-        <S.ButtonOpacity onPress={toogleActiveFlash}>
-          <MaterialIcons name="flash-on" size={28} color="white" />
-        </S.ButtonOpacity>
-      </S.Header>
+      <Header
+        iconRight={
+          <S.ButtonOpacity onPress={toogleActiveFlash}>
+            <MaterialIcons name="flash-on" size={28} color="white" />
+          </S.ButtonOpacity>
+        }
+      />
       {renderCamera()}
       <S.Footer>
         <S.FooterWrapperButtons>
