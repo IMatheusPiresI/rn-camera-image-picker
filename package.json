@@ -1,9 +1,10 @@
 {
-  "name": "rntemplateprojects",
+  "name": "camcrop",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "android:staging": "cd android && ./gradlew assembleRelease",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
@@ -15,6 +16,10 @@
   "dependencies": {
     "react": "18.1.0",
     "react-native": "0.70.5",
+    "react-native-image-crop-picker": "0.36.2",
+    "react-native-responsive-fontsize": "^0.5.1",
+    "react-native-vector-icons": "^9.2.0",
+    "react-native-vision-camera": "^2.15.2",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
@@ -25,6 +30,7 @@
     "@types/jest": "^26.0.23",
     "@types/react": "^18.0.21",
     "@types/react-native": "^0.70.6",
+    "@types/react-native-vector-icons": "^6.4.12",
     "@types/react-test-renderer": "^18.0.0",
     "@types/styled-components": "^5.1.26",
     "@types/styled-components-react-native": "^5.2.0",

@@ -1,9 +1,7 @@
 import React from 'react';
 
-import * as S from './styles';
+import { Camera } from '../Camera';
 
-export const Home = () => (
-  <S.Container>
-    <S.Title>Hello World</S.Title>
-  </S.Container>
-);
+// import * as S from './styles';
+
+export const Home = () => <Camera />;
