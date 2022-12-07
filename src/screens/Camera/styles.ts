@@ -3,8 +3,11 @@ import { RFValue } from 'react-native-responsive-fontsize';
 
 export const Container = styled.View`
   flex: 1;
-  align-items: center;
-  justify-content: center;
+`;
+
+export const ContainerCamera = styled.View`
+  flex: 1;
+  width: 100%;
 `;
 
 export const Title = styled.Text`
@@ -13,6 +16,13 @@ export const Title = styled.Text`
 
 export const CameraWrapper = styled.View`
   width: 100%;
+  flex: 1;
+`;
+
+export const LoadingWrapper = styled.View`
+  align-items: center;
+  justify-content: center;
+
   flex: 1;
 `;
 

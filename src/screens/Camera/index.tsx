@@ -8,12 +8,14 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ImagePicker from 'react-native-image-crop-picker';
 import { useNavigation } from '@react-navigation/native';
+import { useTheme } from 'styled-components/native';
 
 import { Header } from '../../componnets/Header';
 
 import * as S from './styles';
 
 export const Camera = () => {
+  const theme = useTheme();
   const [switchCamera, setSwitchCamera] = useState<'back' | 'front'>('back');
   const [activeFlash, setActiveFlash] = useState<'on' | 'off'>('off');
   const navigation = useNavigation();
@@ -85,7 +87,11 @@ export const Camera = () => {
 
   const renderCamera = () => {
     if (device === null || device === undefined) {
-      return <ActivityIndicator size="large" />;
+      return (
+        <S.LoadingWrapper>
+          <ActivityIndicator size="large" color={theme.colors.shape} />
+        </S.LoadingWrapper>
+      );
     } else {
       return (
         <S.CameraWrapper>
@@ -111,7 +117,7 @@ export const Camera = () => {
           </S.ButtonOpacity>
         }
       />
-      {renderCamera()}
+      <S.ContainerCamera>{renderCamera()}</S.ContainerCamera>
       <S.Footer>
         <S.FooterWrapperButtons>
           <S.ButtonIcon onPress={handlePickImageGallery}>
