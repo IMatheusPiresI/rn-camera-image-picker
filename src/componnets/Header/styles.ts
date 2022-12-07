@@ -9,5 +9,6 @@ export const Container = styled.View`
   align-items: center;
   justify-content: space-between;
   padding: 0 ${RFValue(20)}px;
+  background-color: ${({ theme }) => theme.colors.black};
 `;
 export const ButtonOpacity = styled.TouchableOpacity``;
