@@ -4,45 +4,33 @@ import {
   NativeScrollEvent,
   NativeSyntheticEvent,
 } from 'react-native';
-import { useDerivedValue, useSharedValue } from 'react-native-reanimated';
+import {
+  interpolate,
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+} from 'react-native-reanimated';
 
-import Crop from '../../assets/animations/crop.json';
-import Telephone from '../../assets/animations/telephone.json';
-import Gallery from '../../assets/animations/gallery.json';
 import metrics from '../../styles/theme/metrics';
+import { pages } from '../../mocks/pages';
 
 import * as S from './styles';
 import { PageOnboarding } from './_components/PageOnboarding';
-
-const pages = [
-  {
-    id: '1',
-    title: 'Select',
-    animation: Gallery,
-    autoPlay: true,
-    desc: 'Select an image from your gallery to be able to perform cropping, rotation or zoom.',
-  },
-  {
-    id: '2',
-    title: 'Crop',
-    animation: Crop,
-    desc: 'Select an image from the gallery or take a photo to be able to crop and edit',
-  },
-  {
-    id: '3',
-    title: 'Gallery',
-    animation: Telephone,
-    desc: 'Upload image to your selected type and have your own photo gallery grouped by type.',
-  },
-];
+import { Paginator } from './_components/Paginator';
+import { StackActions, useNavigation } from '@react-navigation/native';
 
 export const Onboarding = () => {
   const [disabledNextButton, setDisabledNextButton] = useState<boolean>(false);
   const rAnimatedScroll = useSharedValue(0);
   const scrollRef = useRef<FlatList>(null);
+  const navigation = useNavigation();
 
   const activeIndex = useDerivedValue(() =>
     Math.round(rAnimatedScroll.value / metrics.screenWidth),
+  );
+
+  const currentAnimationValue = useDerivedValue(
+    () => rAnimatedScroll.value / metrics.screenWidth,
   );
 
   const handleScroll = (
@@ -56,7 +44,6 @@ export const Onboarding = () => {
   };
 
   const handleNextPage = () => {
-    console.log('ativei');
     const nextPage = activeIndex.value + 1;
     const offset = nextPage * metrics.screenWidth;
     scrollRef.current?.scrollToOffset({ offset: offset });
@@ -64,13 +51,46 @@ export const Onboarding = () => {
   };
 
   const handleDisableButtonOnFinishPages = (currentPage: number) => {
-    const totalPages = pages.length - 1;
+    const totalPages = pages.length;
 
     if (currentPage === totalPages) {
       return setDisabledNextButton(true);
     }
     setDisabledNextButton(false);
   };
+
+  const handleGoHome = () => {
+    navigation.dispatch(StackActions.replace('Home'));
+  };
+
+  const rAnimationActionButtons = useAnimatedStyle(() => ({
+    bottom: interpolate(
+      currentAnimationValue.value,
+      [0, 1, 1.6, 2],
+      [0, 0, 30, -80],
+    ),
+    opacity: interpolate(
+      currentAnimationValue.value,
+      [0, 1, 1.6, 2],
+      [1, 1, 0, 0],
+    ),
+
+    zIndex: interpolate(currentAnimationValue.value, [0, 1, 2], [5, 5, 0]),
+  }));
+
+  const rAnimatedStartedAppButton = useAnimatedStyle(() => ({
+    bottom: interpolate(
+      currentAnimationValue.value,
+      [0, 1, 1.6, 2],
+      [-150, -150, 30, 0],
+    ),
+    opacity: interpolate(
+      currentAnimationValue.value,
+      [0, 1, 1.6, 2],
+      [0, 0, 0, 1],
+    ),
+    zIndex: interpolate(currentAnimationValue.value, [0, 1, 2], [0, 0, 5]),
+  }));
 
   return (
     <S.Container>
@@ -85,7 +105,8 @@ export const Onboarding = () => {
             title={item.title}
             description={item.desc}
             animation={item.animation}
-            autoPlay={item.autoPlay}
+            activeIndex={activeIndex.value}
+            indexAnimation={item.indexAnimation}
           />
         )}
         onScroll={(event) => handleScroll(event)}
@@ -96,18 +117,27 @@ export const Onboarding = () => {
         pagingEnabled
       />
       <S.WrapperInfo>
-        <S.WrapperDots />
-        <S.WrapperActionButtons>
-          <S.ButtonOpacity>
+        <S.WrapperDots>
+          <Paginator activeIndex={activeIndex} qtyPages={pages.length} />
+        </S.WrapperDots>
+        <S.WrapperActionButtons style={rAnimationActionButtons}>
+          <S.ActionButton onPress={handleGoHome}>
             <S.TitleButtonOpacity>Skip</S.TitleButtonOpacity>
-          </S.ButtonOpacity>
-          <S.ButtonOpacity
+          </S.ActionButton>
+          <S.ActionButton
             onPress={handleNextPage}
             disabled={disabledNextButton}
           >
             <S.TitleButtonOpacity>Next</S.TitleButtonOpacity>
-          </S.ButtonOpacity>
+          </S.ActionButton>
         </S.WrapperActionButtons>
+        <S.ContainerStartedButton>
+          <S.WrapperButtonStart style={rAnimatedStartedAppButton}>
+            <S.ButtonStart onPress={handleGoHome}>
+              <S.TitleButtonOpacity>Get Started</S.TitleButtonOpacity>
+            </S.ButtonStart>
+          </S.WrapperButtonStart>
+        </S.ContainerStartedButton>
       </S.WrapperInfo>
     </S.Container>
   );

@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.pink_light};
 
   align-items: center;
   justify-content: center;
@@ -18,5 +18,5 @@ export const BoxTitle = styled.View`
 
 export const Title = styled(Animated.Text)`
   font-size: ${RFValue(32)}px;
-  color: #00f0ff;
+  color: ${({ theme }) => theme.colors.salmon};
 `;

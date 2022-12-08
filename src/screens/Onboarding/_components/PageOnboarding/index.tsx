@@ -6,8 +6,9 @@ import * as S from './styles';
 type Props = {
   title: string;
   animation: AnimationObject;
-  autoPlay?: boolean;
   description: string;
+  indexAnimation: number;
+  activeIndex: number;
 };
 
 export const PageOnboarding: React.FC<Props> = ({
@@ -18,13 +19,7 @@ export const PageOnboarding: React.FC<Props> = ({
   <S.Container>
     <S.TitlePage>{title}</S.TitlePage>
     <S.ContainerAnimation>
-      <LottieView
-        source={animation}
-        autoPlay
-        cacheComposition={true}
-        loop
-        resizeMode="contain"
-      />
+      <LottieView source={animation} resizeMode="contain" autoPlay />
     </S.ContainerAnimation>
     <S.Description>{description}</S.Description>
   </S.Container>

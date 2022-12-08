@@ -12,7 +12,7 @@ export const Container = styled.View`
 export const TitlePage = styled.Text`
   font-size: ${RFValue(32)}px;
   font-family: ${({ theme }) => theme.fonts.POPPINS_BOLD_ITALIC};
-  color: ${({ theme }) => theme.colors.surface};
+  color: ${({ theme }) => theme.colors.salmon};
 `;
 
 export const Description = styled.Text`
@@ -20,7 +20,7 @@ export const Description = styled.Text`
   text-align: center;
   max-width: ${RFValue(300)}px;
   font-family: ${({ theme }) => theme.fonts.POPPINS_MEDIUM};
-  color: ${({ theme }) => theme.colors.surface};
+  color: ${({ theme }) => theme.colors.salmon};
 `;
 
 export const ContainerAnimation = styled.View`
