@@ -73,7 +73,7 @@ export const SplashScreen = () => {
   return (
     <S.Container>
       <S.AnimatedBox style={rImageTransition}>
-        <Logo width={132} height={132} />
+        <Logo width={100} height={100} />
       </S.AnimatedBox>
       <S.BoxTitle>
         <S.Title style={tTitleAnimate}>CamCropper</S.Title>

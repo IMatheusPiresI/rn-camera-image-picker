@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import 'react-native-gesture-handler';
 import { ThemeProvider } from 'styled-components/native';
-import SplashScreen from 'react-native-splash-screen';
+import RNBootSplash from 'react-native-bootsplash';
 
 import theme from './styles/theme';
 import { AppRoutes } from './routes';
 
 export const App = () => {
   useEffect(() => {
-    SplashScreen.hide();
+    RNBootSplash.hide();
   }, []);
 
   return (

@@ -1,16 +1,15 @@
 package com.rntemplateprojects;
-import android.os.Bundle;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
-// react-native-splash-screen >= 0.3.1
-import org.devio.rn.splashscreen.SplashScreen; // here
+import android.os.Bundle;
+import com.zoontek.rnbootsplash.RNBootSplash;
 
 public class MainActivity extends ReactActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    SplashScreen.show(this);  // here
+    RNBootSplash.init(this); 
     super.onCreate(null);
   }
 

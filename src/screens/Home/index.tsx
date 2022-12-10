@@ -1,12 +1,17 @@
 import React from 'react';
 import LottieView from 'lottie-react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import LikePhoto from '../../assets/animations/like-photo.json';
 
 import * as S from './styles';
 
 export const Home = () => {
-  console.log('home');
+  const navigation = useNavigation();
+
+  const handleGoCamera = () => {
+    navigation.navigate('Camera');
+  };
   return (
     <S.Container>
       <S.Title>
@@ -18,7 +23,7 @@ export const Home = () => {
         <LottieView source={LikePhoto} autoPlay loop speed={0.5} />
       </S.WrapperAnimation>
       <S.ContainerOptions>
-        <S.ButtonOpacity>
+        <S.ButtonOpacity onPress={handleGoCamera}>
           <S.TitleButton>Take a Pickture</S.TitleButton>
         </S.ButtonOpacity>
         <S.ButtonOpacity>
