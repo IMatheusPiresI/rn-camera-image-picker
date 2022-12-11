@@ -13,6 +13,7 @@ import { useTheme } from 'styled-components/native';
 import { Header } from '../../componnets/Header';
 
 import * as S from './styles';
+import { configCropper } from '../../config';
 
 export const Camera = () => {
   const theme = useTheme();
@@ -37,9 +38,8 @@ export const Camera = () => {
     ImagePicker.openCropper({
       mediaType: 'photo',
       path: imagePath,
-      cropperToolbarTitle: 'Editar Foto',
-      cropperActiveWidgetColor: '#00ff22',
-      cropperStatusBarColor: '#00ffff',
+      freeStyleCropEnabled: true,
+      ...configCropper,
     })
       .then((imageCropped) => {
         console.log('aqui');
