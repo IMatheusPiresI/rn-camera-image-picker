@@ -10,7 +10,7 @@ export const PhotoContainer = styled.View`
   background-color: #0002;
 `;
 
-export const ImageWrapper = styled.TouchableOpacity`
+export const ButtonImageWrapper = styled.TouchableOpacity`
   width: ${RFValue(300)}px;
   height: ${RFValue(180)}px;
   background-color: red;

@@ -89,7 +89,7 @@ export const Camera = () => {
     if (device === null || device === undefined) {
       return (
         <S.LoadingWrapper>
-          <ActivityIndicator size="large" color={theme.colors.shape} />
+          <ActivityIndicator size="large" color={theme.colors.salmon} />
         </S.LoadingWrapper>
       );
     } else {
@@ -113,7 +113,19 @@ export const Camera = () => {
       <Header
         iconRight={
           <S.ButtonOpacity onPress={toogleActiveFlash}>
-            <MaterialIcons name="flash-on" size={28} color="white" />
+            {activeFlash === 'on' ? (
+              <MaterialIcons
+                name="flash-on"
+                size={28}
+                color={theme.colors.salmon}
+              />
+            ) : (
+              <MaterialIcons
+                name="flash-off"
+                size={28}
+                color={theme.colors.salmon}
+              />
+            )}
           </S.ButtonOpacity>
         }
       />
@@ -121,11 +133,21 @@ export const Camera = () => {
       <S.Footer>
         <S.FooterWrapperButtons>
           <S.ButtonIcon onPress={handlePickImageGallery}>
-            <MaterialIcons name="collections" size={30} color="white" />
+            <MaterialIcons
+              name="collections"
+              size={30}
+              color={theme.colors.shape}
+            />
           </S.ButtonIcon>
-          <S.ButtonCamera onPress={handleTakePicture} />
+          <S.ButtonCamera onPress={handleTakePicture}>
+            <MaterialIcons name="camera" size={55} color={theme.colors.shape} />
+          </S.ButtonCamera>
           <S.ButtonIcon onPress={toogleCameraVision}>
-            <MaterialIcons name="camera-front" size={30} color="white" />
+            <MaterialIcons
+              name="camera-front"
+              size={30}
+              color={theme.colors.shape}
+            />
           </S.ButtonIcon>
         </S.FooterWrapperButtons>
       </S.Footer>

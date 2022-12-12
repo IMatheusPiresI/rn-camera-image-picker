@@ -10,6 +10,7 @@ export declare global {
           path: string;
         };
       };
+      PhotoView: { imagePath: string };
     }
   }
 }

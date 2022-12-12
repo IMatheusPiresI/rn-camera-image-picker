@@ -10,6 +10,7 @@ import {
   useDerivedValue,
   useSharedValue,
 } from 'react-native-reanimated';
+import { StackActions, useNavigation } from '@react-navigation/native';
 
 import metrics from '../../styles/theme/metrics';
 import { pages } from '../../mocks/pages';
@@ -17,7 +18,6 @@ import { pages } from '../../mocks/pages';
 import * as S from './styles';
 import { PageOnboarding } from './_components/PageOnboarding';
 import { Paginator } from './_components/Paginator';
-import { StackActions, useNavigation } from '@react-navigation/native';
 
 export const Onboarding = () => {
   const [disabledNextButton, setDisabledNextButton] = useState<boolean>(false);

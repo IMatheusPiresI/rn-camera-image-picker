@@ -30,8 +30,8 @@ export const ButtonOpacity = styled.TouchableOpacity``;
 
 export const Footer = styled.View`
   width: 100%;
-  height: ${RFValue(125)}px;
-  background-color: ${({ theme }) => theme.colors.black};
+  height: ${RFValue(120)}px;
+  background-color: ${({ theme }) => theme.colors.pink_light};
 
   align-items: center;
   justify-content: center;
@@ -48,10 +48,12 @@ export const ButtonCamera = styled.TouchableOpacity`
   width: ${RFValue(75)}px;
   height: ${RFValue(75)}px;
 
-  background-color: ${({ theme }) => theme.colors.shape};
+  background-color: ${({ theme }) => theme.colors.salmon};
 
   border-radius: ${RFValue(40)}px;
-  overflow: hidden;
+
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ButtonIcon = styled.TouchableOpacity`
@@ -61,7 +63,7 @@ export const ButtonIcon = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
 
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: ${({ theme }) => theme.colors.salmon};
 
   border-radius: ${RFValue(25)}px;
 `;

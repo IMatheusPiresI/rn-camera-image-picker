@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { useTheme } from 'styled-components/native';
 
 import * as S from './styles';
 
@@ -9,6 +10,7 @@ type Props = {
 };
 
 export const Header: React.FC<Props> = ({ iconRight }) => {
+  const theme = useTheme();
   const navigation = useNavigation();
 
   const handleGoBack = () => {
@@ -18,7 +20,11 @@ export const Header: React.FC<Props> = ({ iconRight }) => {
   return (
     <S.Container>
       <S.ButtonOpacity onPress={handleGoBack}>
-        <MaterialIcons name="arrow-back" size={28} color="white" />
+        <MaterialIcons
+          name="arrow-back"
+          size={28}
+          color={theme.colors.salmon}
+        />
       </S.ButtonOpacity>
       {iconRight}
     </S.Container>

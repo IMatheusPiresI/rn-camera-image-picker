@@ -4,6 +4,7 @@ import { Camera } from '../screens/Camera';
 import { Home } from '../screens/Home';
 import { Onboarding } from '../screens/Onboarding';
 import { PhotoTypeSeparate } from '../screens/PhotoTypeSeparate';
+import { PhotoView } from '../screens/PhotoView';
 import { SplashScreen } from '../screens/Splash';
 
 const Stack = createStackNavigator();
@@ -19,5 +20,6 @@ export const StackRoutes = () => (
     <Stack.Screen name="Home" component={Home} />
     <Stack.Screen name="Camera" component={Camera} />
     <Stack.Screen name="PhotoTypeSeparate" component={PhotoTypeSeparate} />
+    <Stack.Screen name="PhotoView" component={PhotoView} />
   </Stack.Navigator>
 );
