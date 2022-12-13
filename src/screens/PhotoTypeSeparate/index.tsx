@@ -7,6 +7,7 @@ import { Header } from '../../componnets/Header';
 import Click from '../../assets/animations/click.json';
 import { ModalSelectPhotoType } from '../../componnets/Modal/ModalSelectPhotoType';
 import { Input } from '../../componnets/Input';
+import { PhotoType } from '../../mocks/photoTypes';
 
 import * as S from './styles';
 
@@ -14,7 +15,9 @@ export const PhotoTypeSeparate = () => {
   const routes = useRoute();
   const navigation = useNavigation();
   const [isVisible, setIsVisible] = useState(false);
-  const [typeSelected] = useState('none');
+  const [selectedType, setSelectedType] = useState<PhotoType | undefined>(
+    undefined,
+  );
 
   const { imagePhoto } = routes.params as {
     imagePhoto: {
@@ -28,8 +31,12 @@ export const PhotoTypeSeparate = () => {
     });
   };
 
-  const toogleVisibility = () => {
-    setIsVisible(!isVisible);
+  const handleCloseModal = () => {
+    setIsVisible(false);
+  };
+
+  const handleOpenModal = () => {
+    setIsVisible(true);
   };
 
   return (
@@ -56,12 +63,18 @@ export const PhotoTypeSeparate = () => {
         <S.ContainerTypes>
           <S.WrapperTypeSelect>
             <S.TextType>Selected type:</S.TextType>
-            <S.TextTypeSelected>{typeSelected}</S.TextTypeSelected>
+            <S.TextTypeSelected>
+              {selectedType?.title ?? 'none'}
+            </S.TextTypeSelected>
           </S.WrapperTypeSelect>
           <S.WrapperLottieTypeSelected>
             <S.WrapperAnimationType>
-              <S.RoundViewAnimation onPress={toogleVisibility}>
-                <LottieView source={Click} autoPlay loop />
+              <S.RoundViewAnimation onPress={handleOpenModal}>
+                <LottieView
+                  source={selectedType?.animation ?? Click}
+                  autoPlay
+                  loop
+                />
               </S.RoundViewAnimation>
             </S.WrapperAnimationType>
           </S.WrapperLottieTypeSelected>
@@ -75,7 +88,9 @@ export const PhotoTypeSeparate = () => {
       </S.WrapperButton>
       <ModalSelectPhotoType
         isVisible={isVisible}
-        toogleVisibility={toogleVisibility}
+        handleClose={handleCloseModal}
+        setSelectedType={setSelectedType}
+        selectedType={selectedType}
       />
     </S.Container>
   );

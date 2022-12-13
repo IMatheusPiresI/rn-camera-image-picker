@@ -29,13 +29,14 @@ export const InputText = styled.TextInput<{ textArea: boolean }>`
   border-color: ${({ theme }) => theme.colors.salmon};
   border-radius: ${RFValue(10)}px;
 
-  padding: ${RFValue(10)}px ${RFValue(10)}px;
+  padding: ${RFValue(10)}px ${RFValue(20)}px;
 
   font-size: ${RFValue(13)}px;
 
   ${({ textArea }) =>
     textArea &&
     css`
+      padding: ${RFValue(15)}px ${RFValue(20)}px;
       height: ${RFValue(80)}px;
       max-height: ${RFValue(80)}px;
     `}
