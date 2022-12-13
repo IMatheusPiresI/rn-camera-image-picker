@@ -23,7 +23,7 @@ export const ModalSelectPhotoType: React.FC<Props> = ({
 }) => {
   const [photoTypeSelected, setPhotoTypeSelected] = useState<
     PhotoType | undefined
-  >(selectedType);
+  >(undefined);
   const theme = useTheme();
 
   const handleToogleType = (item: PhotoType) => {
@@ -42,7 +42,7 @@ export const ModalSelectPhotoType: React.FC<Props> = ({
     if (isVisible) {
       setPhotoTypeSelected(selectedType);
     }
-  }, [isVisible]);
+  }, [isVisible, selectedType]);
 
   return (
     <Modal
