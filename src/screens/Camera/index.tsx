@@ -33,8 +33,6 @@ export const Camera = () => {
   };
 
   const handleOpenCropper = (imagePath: string) => {
-    console.log('aqui');
-    console.log(imagePath);
     ImagePicker.openCropper({
       mediaType: 'photo',
       path: imagePath,
@@ -42,7 +40,6 @@ export const Camera = () => {
       ...configCropper,
     })
       .then((imageCropped) => {
-        console.log('aqui');
         navigation.navigate('PhotoTypeSeparate', {
           imagePhoto: {
             path: imageCropped.path,
