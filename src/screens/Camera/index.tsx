@@ -144,7 +144,7 @@ export const Camera = () => {
           </S.ButtonCamera>
           <S.ButtonIcon onPress={toogleCameraVision}>
             <MaterialIcons
-              name="camera-front"
+              name="flip-camera-android"
               size={30}
               color={theme.colors.shape}
             />

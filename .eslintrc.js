@@ -25,6 +25,7 @@ module.exports = {
     'arrow-body-style': ['error', 'as-needed'],
     'react/self-closing-comp': ['error', { component: true, html: true }],
     'react-hooks/exhaustive-deps': 'warn',
+    'react-native/no-inline-styles': 0,
     'react/jsx-filename-extension': [
       'warn',
       {
