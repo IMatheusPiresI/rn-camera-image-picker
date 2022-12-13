@@ -19,8 +19,6 @@ export const PhotoView = () => {
   const route = useRoute();
   const { imagePath } = route.params as { imagePath: string };
 
-  console.log(imagePath);
-
   const pinchGesture = Gesture.Pinch()
     .onUpdate((e) => {
       scale.value = e.scale;
