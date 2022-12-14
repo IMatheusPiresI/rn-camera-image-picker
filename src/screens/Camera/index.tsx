@@ -7,7 +7,7 @@ import {
 } from 'react-native-vision-camera';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ImagePicker from 'react-native-image-crop-picker';
-import { useNavigation } from '@react-navigation/native';
+import { StackActions, useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components/native';
 
 import { Header } from '../../components/Header';
@@ -40,11 +40,13 @@ export const Camera = () => {
       ...configCropper,
     })
       .then((imageCropped) => {
-        navigation.navigate('PhotoTypeSeparate', {
-          imagePhoto: {
-            path: imageCropped.path,
-          },
-        });
+        navigation.dispatch(
+          StackActions.replace('PhotoTypeSeparate', {
+            imagePhoto: {
+              path: imageCropped.path,
+            },
+          }),
+        );
       })
       .catch((err) => {
         console.log(err);
