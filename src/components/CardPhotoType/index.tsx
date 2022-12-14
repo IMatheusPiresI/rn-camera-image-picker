@@ -12,7 +12,7 @@ import { useTheme } from 'styled-components/native';
 import * as S from './styles';
 
 type Props = {
-  type: string;
+  type?: string;
   animation: AnimationObject;
   isActive: boolean;
 } & TouchableOpacityProps;
@@ -55,25 +55,27 @@ export const CardPhotoType: React.FC<Props> = ({
     if (isActive) {
       LottieRef.current?.play();
       animateColor.value = withTiming(1, {
-        duration: 1000,
+        duration: 700,
       });
     } else {
       LottieRef.current?.pause();
       animateColor.value = withTiming(0, {
-        duration: 1000,
+        duration: 700,
       });
     }
   }, [animateColor, isActive]);
 
   return (
-    <S.Container {...rest}>
-      <S.BoxRoundAnimation>
+    <S.Container>
+      <S.BoxRoundAnimation {...rest}>
         <LottieView ref={LottieRef} source={animation} />
         <S.Shadow style={rShadowBackground} />
       </S.BoxRoundAnimation>
-      <S.Type isActive={isActive} style={rTextColor}>
-        {type}
-      </S.Type>
+      {type && (
+        <S.Type isActive={isActive} style={rTextColor}>
+          {type}
+        </S.Type>
+      )}
     </S.Container>
   );
 };

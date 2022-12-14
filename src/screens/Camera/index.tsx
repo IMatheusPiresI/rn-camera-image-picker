@@ -10,7 +10,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components/native';
 
-import { Header } from '../../componnets/Header';
+import { Header } from '../../components/Header';
 
 import * as S from './styles';
 import { configCropper } from '../../config';

@@ -9,8 +9,8 @@ import * as S from './styles';
 export const Home = () => {
   const navigation = useNavigation();
 
-  const handleGoCamera = () => {
-    navigation.navigate('Camera');
+  const handleNavigation = (route: 'Camera' | 'Gallery') => {
+    navigation.navigate(route);
   };
   return (
     <S.Container>
@@ -23,10 +23,10 @@ export const Home = () => {
         <LottieView source={LikePhoto} autoPlay loop speed={0.5} />
       </S.WrapperAnimation>
       <S.ContainerOptions>
-        <S.ButtonOpacity onPress={handleGoCamera}>
+        <S.ButtonOpacity onPress={() => handleNavigation('Camera')}>
           <S.TitleButton>Take a Pickture</S.TitleButton>
         </S.ButtonOpacity>
-        <S.ButtonOpacity>
+        <S.ButtonOpacity onPress={() => handleNavigation('Gallery')}>
           <S.TitleButton>My Gallery</S.TitleButton>
         </S.ButtonOpacity>
         <S.ButtonOpacity>

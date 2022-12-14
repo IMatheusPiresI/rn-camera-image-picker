@@ -11,6 +11,7 @@ export declare global {
         };
       };
       PhotoView: { imagePath: string };
+      Gallery: undefined;
     }
   }
 }

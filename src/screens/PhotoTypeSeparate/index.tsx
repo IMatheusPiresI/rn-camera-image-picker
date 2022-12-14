@@ -3,11 +3,12 @@ import { Platform } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import LottieView from 'lottie-react-native';
 
-import { Header } from '../../componnets/Header';
+import { Header } from '../../components/Header';
 import Click from '../../assets/animations/click.json';
-import { ModalSelectPhotoType } from '../../componnets/Modal/ModalSelectPhotoType';
-import { Input } from '../../componnets/Input';
+import { ModalSelectPhotoType } from '../../components/Modal/ModalSelectPhotoType';
+import { Input } from '../../components/Input';
 import { PhotoType } from '../../mocks/photoTypes';
+import { Button } from '../../components/Button';
 
 import * as S from './styles';
 
@@ -81,11 +82,9 @@ export const PhotoTypeSeparate = () => {
         </S.ContainerTypes>
       </S.WrapperContent>
 
-      <S.WrapperButton>
-        <S.ButtonContinue>
-          <S.ButtonContinueTitle>CONTINUE</S.ButtonContinueTitle>
-        </S.ButtonContinue>
-      </S.WrapperButton>
+      <S.Footer>
+        <Button title="Continue" disabled={selectedType === undefined} />
+      </S.Footer>
       <ModalSelectPhotoType
         isVisible={isVisible}
         handleClose={handleCloseModal}

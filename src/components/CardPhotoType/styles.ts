@@ -2,9 +2,9 @@ import Animated from 'react-native-reanimated';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
-export const Container = styled.TouchableOpacity``;
+export const Container = styled.View``;
 
-export const BoxRoundAnimation = styled.View`
+export const BoxRoundAnimation = styled.TouchableOpacity`
   width: ${RFValue(65)}px;
   height: ${RFValue(65)}px;
 
@@ -17,7 +17,6 @@ export const BoxRoundAnimation = styled.View`
   border-width: ${RFValue(1)}px;
   border-color: ${({ theme }) => theme.colors.salmon};
 
-  elevation: 4;
   overflow: hidden;
 `;
 

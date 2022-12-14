@@ -71,24 +71,3 @@ export const Footer = styled.View`
   justify-content: center;
   padding: ${RFValue(10)}px 0;
 `;
-
-export const ButtonContinue = styled.TouchableOpacity<{ disabled: boolean }>`
-  padding: ${RFValue(5)}px;
-
-  width: ${RFValue(180)}px;
-
-  background-color: ${({ theme, disabled }) =>
-    disabled ? theme.colors.gray : theme.colors.salmon};
-
-  border-radius: ${RFValue(30)}px;
-
-  align-items: center;
-  justify-content: center;
-`;
-
-export const TitleContinue = styled.Text`
-  font-size: ${RFValue(16)}px;
-
-  font-family: ${({ theme }) => theme.fonts.POPPINS_MEDIUM};
-  color: ${({ theme }) => theme.colors.shape};
-`;

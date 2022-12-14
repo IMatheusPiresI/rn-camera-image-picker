@@ -106,12 +106,24 @@ export const RoundViewAnimation = styled.TouchableOpacity`
 
 export const WrapperDontSelectedType = styled.View``;
 
-export const WrapperButton = styled.View`
+export const Footer = styled.View`
   padding: ${RFValue(10)}px ${RFValue(20)}px;
   background-color: ${({ theme }) => theme.colors.salmon};
 
   align-items: center;
   justify-content: center;
+`;
+
+export const WrapperButton = styled.View`
+  background-color: ${({ theme }) => theme.colors.pink_light};
+
+  width: ${RFValue(130)}px;
+  padding: ${RFValue(8)}px 0;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: ${RFValue(20)}px;
 `;
 
 export const ButtonContinue = styled.TouchableOpacity`

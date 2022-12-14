@@ -7,7 +7,7 @@ import {
   withTiming,
 } from 'react-native-reanimated';
 
-import { Header } from '../../componnets/Header';
+import { Header } from '../../components/Header';
 import theme from '../../styles/theme';
 
 import * as S from './styles';

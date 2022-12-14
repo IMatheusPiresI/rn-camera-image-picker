@@ -5,6 +5,7 @@ import { useTheme } from 'styled-components/native';
 
 import { CardPhotoType } from '../../CardPhotoType';
 import { PhotoType, photoTypes } from '../../../mocks/photoTypes';
+import { Button } from '../../Button';
 
 import * as S from './styles';
 
@@ -93,12 +94,12 @@ export const ModalSelectPhotoType: React.FC<Props> = ({
           />
         </S.Content>
         <S.Footer>
-          <S.ButtonContinue
+          <Button
+            title="Select"
             disabled={photoTypeSelected ? false : true}
             onPress={handleSetSelectedType}
-          >
-            <S.TitleContinue>Select</S.TitleContinue>
-          </S.ButtonContinue>
+            variant="salmon"
+          />
         </S.Footer>
       </S.Container>
     </Modal>
