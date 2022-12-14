@@ -7,9 +7,10 @@ import * as S from './styles';
 
 type Props = {
   iconRight?: ReactElement;
+  title?: string;
 };
 
-export const Header: React.FC<Props> = ({ iconRight }) => {
+export const Header: React.FC<Props> = ({ iconRight, title }) => {
   const theme = useTheme();
   const navigation = useNavigation();
 
@@ -19,13 +20,16 @@ export const Header: React.FC<Props> = ({ iconRight }) => {
 
   return (
     <S.Container>
-      <S.ButtonOpacity onPress={handleGoBack}>
-        <MaterialIcons
-          name="arrow-back"
-          size={28}
-          color={theme.colors.salmon}
-        />
-      </S.ButtonOpacity>
+      <S.Wrapper>
+        <S.ButtonOpacity onPress={handleGoBack}>
+          <MaterialIcons
+            name="arrow-back"
+            size={28}
+            color={theme.colors.salmon}
+          />
+        </S.ButtonOpacity>
+        <S.Title>{title}</S.Title>
+      </S.Wrapper>
       {iconRight}
     </S.Container>
   );
