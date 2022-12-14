@@ -12,3 +12,21 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.pink_light};
 `;
 export const ButtonOpacity = styled.TouchableOpacity``;
+
+export const Wrapper = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Title = styled.Text`
+  font-size: ${RFValue(22)}px;
+
+  margin-left: ${RFValue(8)}px;
+
+  font-family: ${({ theme }) => theme.fonts.POPPINS_BOLD};
+
+  color: ${({ theme }) => theme.colors.salmon};
+
+  top: 2px;
+`;
