@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import LottieView, { AnimationObject } from 'lottie-react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import Landscape from '../../assets/animations/landscape.json';
 import Anime from '../../assets/animations/anime.json';
@@ -17,6 +18,8 @@ type Props = {
 };
 
 export const CardGallery: React.FC<Props> = ({ title, gallery }) => {
+  const navigation = useNavigation();
+
   const lottieAnimation: AnimationObject = useMemo(() => {
     switch (title) {
       case 'Landscape':
@@ -45,8 +48,14 @@ export const CardGallery: React.FC<Props> = ({ title, gallery }) => {
     return undefined;
   }, [gallery.images]);
 
+  const handleGoGalleryPhotos = () => {
+    navigation.navigate('GalleryPhotos', {
+      gallery,
+    });
+  };
+
   return (
-    <S.Container>
+    <S.Container onPress={handleGoGalleryPhotos}>
       <S.LastImage
         source={{
           uri: lastImageGallery,

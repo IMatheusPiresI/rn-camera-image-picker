@@ -1,7 +1,8 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { Camera } from '../screens/Camera';
-import { Gallery } from '../screens/Gallery';
+import { Galleries } from '../screens/Galleries';
+import { GalleryPhotos } from '../screens/GalleryPhotos';
 import { Home } from '../screens/Home';
 import { Onboarding } from '../screens/Onboarding';
 import { PhotoTypeSeparate } from '../screens/PhotoTypeSeparate';
@@ -22,6 +23,7 @@ export const StackRoutes = () => (
     <Stack.Screen name="Camera" component={Camera} />
     <Stack.Screen name="PhotoTypeSeparate" component={PhotoTypeSeparate} />
     <Stack.Screen name="PhotoView" component={PhotoView} />
-    <Stack.Screen name="Gallery" component={Gallery} />
+    <Stack.Screen name="Gallery" component={Galleries} />
+    <Stack.Screen name="GalleryPhotos" component={GalleryPhotos} />
   </Stack.Navigator>
 );
