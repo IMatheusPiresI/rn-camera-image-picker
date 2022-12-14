@@ -7,7 +7,7 @@ import { RootState } from '../../store';
 
 import * as S from './styles';
 
-export const Gallery = () => {
+export const Galleries = () => {
   const galleries = useSelector((state: RootState) => state.photos?.galleries);
 
   return (

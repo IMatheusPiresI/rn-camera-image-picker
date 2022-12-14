@@ -44,6 +44,42 @@ const initialState: Galleries = {
           desc: '',
           path: 'https://img.freepik.com/fotos-gratis/paisagem-de-nevoeiro-matinal-e-montanhas-com-baloes-de-ar-quente-ao-nascer-do-sol_335224-794.jpg',
         },
+        {
+          id: '3',
+          title: 'Imagem 1',
+          desc: '',
+          path: 'https://i1.sndcdn.com/artworks-ndymBJBgSAnzydyv-wgX77A-t500x500.jpg',
+        },
+        {
+          id: '4',
+          title: 'Imagem 2',
+          desc: '',
+          path: 'https://img.freepik.com/fotos-gratis/paisagem-de-nevoeiro-matinal-e-montanhas-com-baloes-de-ar-quente-ao-nascer-do-sol_335224-794.jpg',
+        },
+        {
+          id: '5',
+          title: 'Imagem 1',
+          desc: '',
+          path: 'https://i1.sndcdn.com/artworks-ndymBJBgSAnzydyv-wgX77A-t500x500.jpg',
+        },
+        {
+          id: '6',
+          title: 'Imagem 2',
+          desc: '',
+          path: 'https://img.freepik.com/fotos-gratis/paisagem-de-nevoeiro-matinal-e-montanhas-com-baloes-de-ar-quente-ao-nascer-do-sol_335224-794.jpg',
+        },
+        {
+          id: '7',
+          title: 'Imagem 1',
+          desc: '',
+          path: 'https://i1.sndcdn.com/artworks-ndymBJBgSAnzydyv-wgX77A-t500x500.jpg',
+        },
+        {
+          id: '8',
+          title: 'Imagem 2',
+          desc: '',
+          path: 'https://img.freepik.com/fotos-gratis/paisagem-de-nevoeiro-matinal-e-montanhas-com-baloes-de-ar-quente-ao-nascer-do-sol_335224-794.jpg',
+        },
       ],
     },
     {

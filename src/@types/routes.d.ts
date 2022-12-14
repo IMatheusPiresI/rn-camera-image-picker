@@ -1,3 +1,5 @@
+import { Gallery } from '../store/modules/gallery/reducer';
+
 export declare global {
   namespace ReactNavigation {
     interface RootParamList {
@@ -12,6 +14,7 @@ export declare global {
       };
       PhotoView: { imagePath: string };
       Gallery: undefined;
+      GalleryPhotos: { gallery: Gallery };
     }
   }
 }
