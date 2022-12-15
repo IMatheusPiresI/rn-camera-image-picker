@@ -5,7 +5,7 @@ import * as S from './styles';
 
 type Props = {
   title: string;
-  variant?: 'salmon';
+  variant?: 'salmon' | 'delete';
   disabled?: boolean;
 } & TouchableOpacityProps;
 

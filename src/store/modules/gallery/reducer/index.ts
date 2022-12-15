@@ -2,14 +2,12 @@ type Action = {
   type: string;
   payload: {
     idGallery: string;
-    idImage: string;
-    title: string;
-    desc: string;
-    path: string;
+    image: Image;
+    images: Image[];
   };
 };
 
-type Image = {
+export type Image = {
   id: string;
   title: string;
   desc: string;
@@ -19,7 +17,7 @@ type Image = {
 export type Gallery = {
   id: string;
   title: string;
-  images: Image[];
+  images: Image[] | null;
 };
 
 type Galleries = {
@@ -31,56 +29,7 @@ const initialState: Galleries = {
     {
       id: '1',
       title: 'Landscape',
-      images: [
-        {
-          id: '1',
-          title: 'Imagem 1',
-          desc: '',
-          path: 'https://i1.sndcdn.com/artworks-ndymBJBgSAnzydyv-wgX77A-t500x500.jpg',
-        },
-        {
-          id: '2',
-          title: 'Imagem 2',
-          desc: '',
-          path: 'https://img.freepik.com/fotos-gratis/paisagem-de-nevoeiro-matinal-e-montanhas-com-baloes-de-ar-quente-ao-nascer-do-sol_335224-794.jpg',
-        },
-        {
-          id: '3',
-          title: 'Imagem 1',
-          desc: '',
-          path: 'https://i1.sndcdn.com/artworks-ndymBJBgSAnzydyv-wgX77A-t500x500.jpg',
-        },
-        {
-          id: '4',
-          title: 'Imagem 2',
-          desc: '',
-          path: 'https://img.freepik.com/fotos-gratis/paisagem-de-nevoeiro-matinal-e-montanhas-com-baloes-de-ar-quente-ao-nascer-do-sol_335224-794.jpg',
-        },
-        {
-          id: '5',
-          title: 'Imagem 1',
-          desc: '',
-          path: 'https://i1.sndcdn.com/artworks-ndymBJBgSAnzydyv-wgX77A-t500x500.jpg',
-        },
-        {
-          id: '6',
-          title: 'Imagem 2',
-          desc: '',
-          path: 'https://img.freepik.com/fotos-gratis/paisagem-de-nevoeiro-matinal-e-montanhas-com-baloes-de-ar-quente-ao-nascer-do-sol_335224-794.jpg',
-        },
-        {
-          id: '7',
-          title: 'Imagem 1',
-          desc: '',
-          path: 'https://i1.sndcdn.com/artworks-ndymBJBgSAnzydyv-wgX77A-t500x500.jpg',
-        },
-        {
-          id: '8',
-          title: 'Imagem 2',
-          desc: '',
-          path: 'https://img.freepik.com/fotos-gratis/paisagem-de-nevoeiro-matinal-e-montanhas-com-baloes-de-ar-quente-ao-nascer-do-sol_335224-794.jpg',
-        },
-      ],
+      images: [],
     },
     {
       id: '2',
@@ -90,7 +39,32 @@ const initialState: Galleries = {
     {
       id: '3',
       title: 'Animals',
-      images: [],
+      images: [
+        {
+          id: '1',
+          title: '',
+          desc: '',
+          path: 'https://img.freepik.com/free-vector/cute-happy-turtle-swimming-cartoon-animal-sporty-icon-concept-isolated-flat-cartoon-style_138676-2198.jpg',
+        },
+        {
+          id: '2',
+          title: '',
+          desc: '',
+          path: 'https://img.freepik.com/free-vector/cute-happy-turtle-swimming-cartoon-animal-sporty-icon-concept-isolated-flat-cartoon-style_138676-2198.jpg',
+        },
+        {
+          id: '3',
+          title: '',
+          desc: '',
+          path: 'https://img.freepik.com/free-vector/cute-happy-turtle-swimming-cartoon-animal-sporty-icon-concept-isolated-flat-cartoon-style_138676-2198.jpg',
+        },
+        {
+          id: '4',
+          title: '',
+          desc: '',
+          path: 'https://img.freepik.com/free-vector/cute-happy-turtle-swimming-cartoon-animal-sporty-icon-concept-isolated-flat-cartoon-style_138676-2198.jpg',
+        },
+      ],
     },
     {
       id: '4',
@@ -116,17 +90,36 @@ export default function photos(state = initialState, action: Action) {
       return (state = {
         galleries: state.galleries.map((gallery) => {
           if (gallery.id === action.payload.idGallery) {
-            gallery.images.push({
-              id: action.payload.idImage,
-              title: action.payload.title,
-              desc: action.payload.desc,
-              path: action.payload.path,
+            gallery.images?.push({
+              id: action.payload.image.id,
+              title: action.payload.image.title,
+              desc: action.payload.image.desc,
+              path: action.payload.image.path,
             });
           }
 
           return gallery;
         }),
       });
+
+    case 'DELETE_PHOTO':
+      console.log('entrei');
+      return (state = {
+        galleries: state.galleries.map((gallery) => {
+          if (gallery.id === action.payload.idGallery) {
+            const images = gallery.images?.filter(
+              (image) => image.id !== action.payload.image.id,
+            );
+            return {
+              ...gallery,
+              images: images ?? [],
+            };
+          }
+
+          return gallery;
+        }),
+      });
+
     default:
       return state;
   }
