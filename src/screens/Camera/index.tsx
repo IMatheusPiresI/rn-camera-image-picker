@@ -57,7 +57,6 @@ export const Camera = () => {
     const photo = await cameraRef.current?.takePhoto();
 
     if (photo) {
-      console.log(photo);
       handleOpenCropper(`file://${photo.path}`);
     }
   };

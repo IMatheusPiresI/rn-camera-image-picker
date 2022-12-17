@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components/native';
 
 type VariantProps = {
   disabled?: boolean;
-  variant?: 'salmon';
+  variant?: 'salmon' | 'delete';
 };
 
 export const Container = styled.TouchableOpacity<VariantProps>`
@@ -23,6 +23,14 @@ export const Container = styled.TouchableOpacity<VariantProps>`
       background-color: ${({ theme }) => theme.colors.salmon};
     `}
 
+  ${({ variant }) =>
+    variant === 'delete' &&
+    css`
+      background-color: ${({ theme }) => theme.colors.error};
+    `}
+
+
+
   ${({ theme, disabled }) =>
     disabled &&
     css`
@@ -40,6 +48,14 @@ export const Title = styled.Text<VariantProps>`
     css`
       color: ${({ theme }) => theme.colors.shape};
     `}
+
+  ${({ variant }) =>
+    variant === 'delete' &&
+    css`
+      color: ${({ theme }) => theme.colors.shape};
+    `}
+
+
 
   ${({ theme, disabled }) =>
     disabled &&

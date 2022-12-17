@@ -38,8 +38,8 @@ export const CardGallery: React.FC<Props> = ({ title, gallery }) => {
   }, [title]);
 
   const lastImageGallery = useMemo(() => {
-    if (gallery.images.length > 0) {
-      const totalImages = gallery.images.length;
+    if (gallery.images && gallery.images.length > 0) {
+      const totalImages = gallery.images?.length;
       const lastImage = gallery.images[totalImages - 1];
 
       return lastImage.path;
@@ -50,7 +50,7 @@ export const CardGallery: React.FC<Props> = ({ title, gallery }) => {
 
   const handleGoGalleryPhotos = () => {
     navigation.navigate('GalleryPhotos', {
-      gallery,
+      id: gallery.id,
     });
   };
 

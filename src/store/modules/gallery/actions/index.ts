@@ -1,14 +1,22 @@
-type Image = {
+import { Image } from '../reducer';
+
+type AddPhoto = {
   idGallery: string;
-  idImage: string;
-  title: string;
-  desc: string;
-  path: string;
+  image: Image;
 };
 
-export function AddPhoto(payload: Image) {
+type DeleteImage = AddPhoto;
+
+export function addPhoto(payload: AddPhoto) {
   return {
     type: 'ADD_PHOTO',
+    payload,
+  };
+}
+
+export function deletePhoto(payload: DeleteImage) {
+  return {
+    type: 'DELETE_PHOTO',
     payload,
   };
 }

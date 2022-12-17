@@ -15,7 +15,7 @@ import { ModalSelectPhotoType } from '../../components/Modal/ModalSelectPhotoTyp
 import { Input } from '../../components/Input';
 import { PhotoType } from '../../mocks/photoTypes';
 import { Button } from '../../components/Button';
-import { AddPhoto } from '../../store/modules/gallery/actions';
+import { addPhoto } from '../../store/modules/gallery/actions';
 
 import * as S from './styles';
 
@@ -54,12 +54,14 @@ export const PhotoTypeSeparate = () => {
     if (!selectedType) return;
 
     dispatch(
-      AddPhoto({
+      addPhoto({
         idGallery: selectedType?.id,
-        idImage: String(uuid.v4()),
-        title: title,
-        desc: description,
-        path: imagePhoto.path,
+        image: {
+          id: String(uuid.v4()),
+          title: title,
+          desc: description,
+          path: imagePhoto.path,
+        },
       }),
     );
 

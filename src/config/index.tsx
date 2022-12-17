@@ -1,7 +1,7 @@
 import theme from '../styles/theme';
 
 export const configCropper = {
-  cropperToolbarTitle: 'Editar Foto',
+  cropperToolbarTitle: 'Edit Photo',
   cropperActiveWidgetColor: theme.colors.salmon,
   cropperStatusBarColor: theme.colors.salmon,
   cropperToolbarColor: theme.colors.pink_light,
