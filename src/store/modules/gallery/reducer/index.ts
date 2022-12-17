@@ -39,32 +39,7 @@ const initialState: Galleries = {
     {
       id: '3',
       title: 'Animals',
-      images: [
-        {
-          id: '1',
-          title: '',
-          desc: '',
-          path: 'https://img.freepik.com/free-vector/cute-happy-turtle-swimming-cartoon-animal-sporty-icon-concept-isolated-flat-cartoon-style_138676-2198.jpg',
-        },
-        {
-          id: '2',
-          title: '',
-          desc: '',
-          path: 'https://img.freepik.com/free-vector/cute-happy-turtle-swimming-cartoon-animal-sporty-icon-concept-isolated-flat-cartoon-style_138676-2198.jpg',
-        },
-        {
-          id: '3',
-          title: '',
-          desc: '',
-          path: 'https://img.freepik.com/free-vector/cute-happy-turtle-swimming-cartoon-animal-sporty-icon-concept-isolated-flat-cartoon-style_138676-2198.jpg',
-        },
-        {
-          id: '4',
-          title: '',
-          desc: '',
-          path: 'https://img.freepik.com/free-vector/cute-happy-turtle-swimming-cartoon-animal-sporty-icon-concept-isolated-flat-cartoon-style_138676-2198.jpg',
-        },
-      ],
+      images: [],
     },
     {
       id: '4',

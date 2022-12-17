@@ -6,6 +6,7 @@
     "android": "react-native run-android",
     "android:clean": "cd android && ./gradlew clean",
     "android:staging": "cd android && ./gradlew assembleRelease",
+    "android:build": "cd android && ./gradlew bundleRelease",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
@@ -15,6 +16,7 @@
     "prepare": "husky install .config/husky"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
     "@react-native-masked-view/masked-view": "^0.2.8",
     "@react-navigation/native": "^6.0.16",
     "@react-navigation/stack": "^6.3.7",
@@ -35,6 +37,7 @@
     "react-native-vision-camera": "^2.15.2",
     "react-redux": "^8.0.5",
     "redux": "^4.2.0",
+    "redux-persist": "^6.0.0",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
