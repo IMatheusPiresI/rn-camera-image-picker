@@ -21,6 +21,6 @@ export const PageOnboarding: React.FC<Props> = ({
     <S.ContainerAnimation>
       <LottieView source={animation} resizeMode="contain" autoPlay />
     </S.ContainerAnimation>
-    <S.Description>{description}</S.Description>
+    <S.Description testID="description_onboarding">{description}</S.Description>
   </S.Container>
 );

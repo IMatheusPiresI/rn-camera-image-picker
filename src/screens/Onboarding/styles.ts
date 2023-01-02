@@ -5,15 +5,12 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
-
-  background-color: red;
 `;
 
 export const Title = styled.Text``;
 
 export const OnboardingPages = styled.FlatList`
   flex: 1;
-  background-color: blue;
 ` as unknown as typeof FlatList;
 
 export const WrapperInfo = styled.View`

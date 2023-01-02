@@ -13,7 +13,7 @@ export const Home = () => {
     navigation.navigate(route);
   };
   return (
-    <S.Container>
+    <S.Container testID="home_screen">
       <S.Title>
         Wellcome{'\n'}
         To{'\n'}
