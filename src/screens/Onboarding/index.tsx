@@ -112,28 +112,29 @@ export const Onboarding = () => {
         onScroll={(event) => handleScroll(event)}
         horizontal
         bounces={false}
-        scrollEventThrottle={32}
         showsHorizontalScrollIndicator={false}
         pagingEnabled
+        testID="list_pages_onboarding"
       />
       <S.WrapperInfo>
         <S.WrapperDots>
           <Paginator activeIndex={activeIndex} qtyPages={pages.length} />
         </S.WrapperDots>
         <S.WrapperActionButtons style={rAnimationActionButtons}>
-          <S.ActionButton onPress={handleGoHome}>
+          <S.ActionButton onPress={handleGoHome} testID="skip_onboarding">
             <S.TitleButtonOpacity>Skip</S.TitleButtonOpacity>
           </S.ActionButton>
           <S.ActionButton
             onPress={handleNextPage}
             disabled={disabledNextButton}
+            testID="next_onboarding"
           >
             <S.TitleButtonOpacity>Next</S.TitleButtonOpacity>
           </S.ActionButton>
         </S.WrapperActionButtons>
         <S.ContainerStartedButton>
           <S.WrapperButtonStart style={rAnimatedStartedAppButton}>
-            <S.ButtonStart onPress={handleGoHome}>
+            <S.ButtonStart onPress={handleGoHome} testID="get_started">
               <S.TitleButtonOpacity>Get Started</S.TitleButtonOpacity>
             </S.ButtonStart>
           </S.WrapperButtonStart>

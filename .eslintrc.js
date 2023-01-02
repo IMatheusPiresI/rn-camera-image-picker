@@ -18,6 +18,7 @@ module.exports = {
     'react-hooks',
     'import',
   ],
+  ignorePaths: ['test.js'],
   rules: {
     'prettier/prettier': 'error',
     'react/jsx-uses-react': 1,
