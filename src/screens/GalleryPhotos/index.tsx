@@ -67,7 +67,7 @@ export const GalleryPhotos = () => {
   };
 
   return (
-    <S.Container>
+    <S.Container testID="gallery_photos">
       <Header
         title={gallery?.title}
         iconRight={
@@ -77,7 +77,7 @@ export const GalleryPhotos = () => {
                 <MaterialIcons name="delete" size={22} color="white" />
               </S.ButtonDelete>
             ) : (
-              <S.ButtonCamera onPress={handleAddPhoto}>
+              <S.ButtonCamera onPress={handleAddPhoto} testID="add_photo">
                 <MaterialIcons
                   name="add-photo-alternate"
                   size={22}

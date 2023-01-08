@@ -10,7 +10,7 @@ import * as S from './styles';
 export const Galleries = () => {
   const galleries = useSelector((state: RootState) => state.photos?.galleries);
   return (
-    <S.Container>
+    <S.Container testID="gallery_screen">
       <Header title="Galleries" />
       <S.GalleriesWrapper>
         <S.ListGalleries
