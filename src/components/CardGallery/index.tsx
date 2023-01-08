@@ -55,7 +55,10 @@ export const CardGallery: React.FC<Props> = ({ title, gallery }) => {
   };
 
   return (
-    <S.Container onPress={handleGoGalleryPhotos}>
+    <S.Container
+      onPress={handleGoGalleryPhotos}
+      testID="gallery_photos_navigate"
+    >
       <S.LastImage
         source={{
           uri: lastImageGallery,

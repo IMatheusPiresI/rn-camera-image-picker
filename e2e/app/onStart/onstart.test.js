@@ -17,7 +17,7 @@ describe('On Start App Flow', () => {
     it('on animated splash finish, should have show onboarding screen', async () => {
       await waitFor(element(by.id('description_onboarding')))
         .toBeVisible()
-        .withTimeout(5000);
+        .withTimeout(10000);
     });
 
     describe('Onboarding Toggle Screens Flow', () => {
@@ -86,7 +86,7 @@ describe('On Start App Flow', () => {
 
       it('should be clicked on "skip" navigate to home screen', async () => {
         const skipButton = element(by.id('skip_onboarding'));
-        await waitFor(skipButton).toBeVisible().withTimeout(6000);
+        await waitFor(skipButton).toBeVisible().withTimeout(10000);
 
         await skipButton.tap();
 

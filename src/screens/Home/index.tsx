@@ -26,7 +26,10 @@ export const Home = () => {
         <S.ButtonOpacity onPress={() => handleNavigation('Camera')}>
           <S.TitleButton>Take a Pickture</S.TitleButton>
         </S.ButtonOpacity>
-        <S.ButtonOpacity onPress={() => handleNavigation('Gallery')}>
+        <S.ButtonOpacity
+          onPress={() => handleNavigation('Gallery')}
+          testID="gallery_button"
+        >
           <S.TitleButton>My Gallery</S.TitleButton>
         </S.ButtonOpacity>
         <S.ButtonOpacity>

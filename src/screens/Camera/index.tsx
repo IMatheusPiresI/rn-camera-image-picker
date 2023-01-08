@@ -32,25 +32,22 @@ export const Camera = () => {
     setActiveFlash((position) => (position === 'on' ? 'off' : 'on'));
   };
 
-  const handleOpenCropper = (imagePath: string) => {
-    ImagePicker.openCropper({
+  const handleOpenCropper = async (imagePath: string) => {
+    const image = await ImagePicker.openCropper({
       mediaType: 'photo',
       path: imagePath,
       freeStyleCropEnabled: true,
+      cropperChooseText: 'Salvar',
       ...configCropper,
-    })
-      .then((imageCropped) => {
-        navigation.dispatch(
-          StackActions.replace('PhotoTypeSeparate', {
-            imagePhoto: {
-              path: imageCropped.path,
-            },
-          }),
-        );
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    });
+
+    navigation.dispatch(
+      StackActions.replace('PhotoTypeSeparate', {
+        imagePhoto: {
+          path: image.path,
+        },
+      }),
+    );
   };
 
   const handleTakePicture = async () => {
@@ -61,8 +58,8 @@ export const Camera = () => {
     }
   };
 
-  const handlePickImageGallery = () => {
-    ImagePicker.openPicker({
+  const handlePickImageGallery = async () => {
+    await ImagePicker.openPicker({
       mediaType: 'photo',
       compressImageMaxHeight: 900,
       compressImageMaxWidth: 900,
@@ -92,7 +89,7 @@ export const Camera = () => {
       );
     } else {
       return (
-        <S.CameraWrapper>
+        <S.CameraWrapper testID="camera_screen">
           <RNCamera
             ref={cameraRef}
             device={device}
@@ -137,7 +134,7 @@ export const Camera = () => {
               color={theme.colors.shape}
             />
           </S.ButtonIcon>
-          <S.ButtonCamera onPress={handleTakePicture}>
+          <S.ButtonCamera onPress={handleTakePicture} testID="take_picture">
             <MaterialIcons name="camera" size={55} color={theme.colors.shape} />
           </S.ButtonCamera>
           <S.ButtonIcon onPress={toogleCameraVision}>
